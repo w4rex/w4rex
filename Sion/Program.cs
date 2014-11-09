@@ -37,35 +37,14 @@ namespace Sion
             E.SetSkillshot(0.25f, 80f, 1800, false, SkillshotType.SkillshotLine);
 
             //Make the menu
-            Config = new Menu("Sion", "Sion", true);
-
-            //Orbwalker submenu
-            Config.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
-
-            //Add the target selector to the menu as submenu.
-            var targetSelectorMenu = new Menu("Target Selector", "Target Selector");
-            SimpleTs.AddToMenu(targetSelectorMenu);
-            Config.AddSubMenu(targetSelectorMenu);
-
-            //Load the orbwalker and add it to the menu as submenu.
-            Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
-
-            //Combo menu:
-            Config.AddSubMenu(new Menu("Combo", "Combo"));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseQCombo", "Use Q").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseWCombo", "Use W").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("UseECombo", "Use E").SetValue(true));
-            Config.SubMenu("Combo").AddItem(new MenuItem("ComboActive", "Combo!").SetValue(new KeyBind(Config.Item("Orbwalk").GetValue<KeyBind>().Key, KeyBindType.Press)));
-
+            Config = new Menu("t3h 3xpl01t", "t3h 3xpl01t", true);
             
-            Config.AddSubMenu(new Menu("R", "R"));
-            Config.SubMenu("R").AddItem(new MenuItem("AntiCamLock", "Avoid locking camera").SetValue(true));
-            Config.SubMenu("R").AddItem(new MenuItem("MoveToMouse", "Move to mouse (Exploit)").SetValue(false));//Disabled by default since its not legit Keepo
-            
+            Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "Avoid locking camera").SetValue(true));
 
             Config.AddToMainMenu();
 
-            Game.PrintChat("Sion Loaded!");
+            Game.PrintChat("t3h 3xplo1t l04d3d - w4rex - yani ozan - yani uğur ozan - yani puro - yani reyiz!");
             Game.OnGameUpdate += Game_OnGameUpdate;
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Drawing.OnDraw += Drawing_OnDraw;
