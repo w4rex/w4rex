@@ -124,6 +124,7 @@ namespace Annie
 
             Config.AddSubMenu(new Menu("Misc", "misc"));
             Config.SubMenu("misc").AddItem(new MenuItem("PCast", "Packet Cast Spells").SetValue(true));
+            Config.SubMenu("R").AddItem(new MenuItem("AntiCamLock", "Deneme Özellik").SetValue(true));
             Config.SubMenu("misc").AddItem(new MenuItem("autoShield", "Auto shield agaisnt AAs").SetValue(false));
             Config.SubMenu("misc").AddItem(new MenuItem("suppMode", "Support mode").SetValue(false));
             
@@ -148,6 +149,7 @@ namespace Annie
 
             Drawing.OnDraw += OnDraw;
             Game.OnGameUpdate += OnGameUpdate;
+            Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             GameObject.OnCreate += OnCreateObject;
             Orbwalking.BeforeAttack += OrbwalkingBeforeAttack;
 
@@ -387,6 +389,18 @@ namespace Annie
                 select minion)
             {
                 Q.CastOnUnit(minion, Config.Item("PCast").GetValue<bool>());
+            }
+        }
+
+        static void Game_OnGameProcessPacket(GamePacketEventArgs args)
+        {
+            if (args.PacketData[0] == 0xFE && Config.Item("AntiCamLock").GetValue<bool>())
+            {
+                var p = new GamePacket(args.PacketData);
+                if (p.ReadInteger(1) == ObjectManager.Player.NetworkId && p.Size() > 9)
+                {
+                    args.Process = false;
+                }
             }
         }
 
