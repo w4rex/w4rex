@@ -7,8 +7,8 @@
     <ProjectGuid>{E3CEED5B-7C76-4B74-A5FB-B4FF9DC8A6FD}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Annie</RootNamespace>
-    <AssemblyName>Annie</AssemblyName>
+    <RootNamespace>Annie Anan</RootNamespace>
+    <AssemblyName>Annie Anan</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PreBuildEvent />
