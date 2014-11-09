@@ -27,7 +27,6 @@ namespace Sion
 
         static void Game_OnGameLoad(EventArgs args)
         {
-            if (ObjectManager.Player.BaseSkinName != "Sion") return;
 
             //Spells
             Q = new Spell(SpellSlot.Q, 1050);
