@@ -29,17 +29,53 @@ namespace Sion
         {
 
             //Spells
+            Q = new Spell(SpellSlot.Q, 1050);
+            Q.SetSkillshot(0.6f, 100f, float.MaxValue, false, SkillshotType.SkillshotLine);
+            Q.SetCharged("SionQ", "SionQ", 500, 720, 0.5f);
+
+            E = new Spell(SpellSlot.E, 800);
+            E.SetSkillshot(0.25f, 80f, 1800, false, SkillshotType.SkillshotLine);
 
             //Make the menu
             Config = new Menu("t3h 3xpl01t", "t3h 3xpl01t", true);
             
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
-            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "exploiti ac").SetValue(true));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "Avoid locking camera").SetValue(true));
 
             Config.AddToMainMenu();
 
-            Game.PrintChat("ben iflah olmaz bir seks makinesiyim - tufan - ozan - onur");
+            Game.PrintChat("t3h 3xplo1t l04d3d - w4rex - yani ozan - yani uğur ozan - yani puro - yani reyiz!");
+            Game.OnGameUpdate += Game_OnGameUpdate;
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+            Drawing.OnDraw += Drawing_OnDraw;
+            Obj_AI_Hero.OnProcessSpellCast += ObjAiHeroOnOnProcessSpellCast;
+        }
+
+
+
+        private static void ObjAiHeroOnOnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (sender.IsMe && args.SData.Name == "SionQ")
+            {
+                QCastPos = args.End.To2D();
+            }
+        }
+
+        static void Drawing_OnDraw(EventArgs args)
+        {
+            Utility.DrawCircle(ObjectManager.Player.Position, Q.Range, System.Drawing.Color.White);
+        }
+
+        static void Game_OnGameProcessPacket(GamePacketEventArgs args)
+        {
+            if (args.PacketData[0] == 0xFE && Config.Item("AntiCamLock").GetValue<bool>())
+            {
+                var p = new GamePacket(args.PacketData);
+                if (p.ReadInteger(1) == ObjectManager.Player.NetworkId && p.Size() > 9)
+                {
+                    args.Process = false;
+                }
+            }
         }
 
         static void Game_OnGameUpdate(EventArgs args)
