@@ -26,7 +26,7 @@ namespace Sion
             Config = new Menu("t3h 3xpl01t", "t3h 3xpl01t", true);
             
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
-            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "Avoid locking camera").SetValue(true));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
 
             Config.AddToMainMenu();
 
