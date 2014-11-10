@@ -29,25 +29,17 @@ namespace Sion
         {
 
             //Spells
-            Q = new Spell(SpellSlot.Q, 1050);
-            Q.SetSkillshot(0.6f, 100f, float.MaxValue, false, SkillshotType.SkillshotLine);
-            Q.SetCharged("SionQ", "SionQ", 500, 720, 0.5f);
-
-            E = new Spell(SpellSlot.E, 800);
-            E.SetSkillshot(0.25f, 80f, 1800, false, SkillshotType.SkillshotLine);
 
             //Make the menu
             Config = new Menu("t3h 3xpl01t", "t3h 3xpl01t", true);
             
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
-            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "Avoid locking camera").SetValue(new KeyBind("L".ToCharArray()[0] KeyBindType.Toggle)));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "exploiti ac").SetValue(true));
 
             Config.AddToMainMenu();
 
             Game.PrintChat("ben iflah olmaz bir seks makinesiyim - tufan - ozan - onur");
-            Game.OnGameUpdate += Game_OnGameUpdate;
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
-            Drawing.OnDraw += Drawing_OnDraw;
         }
 
         static void Game_OnGameUpdate(EventArgs args)
