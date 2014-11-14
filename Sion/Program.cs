@@ -44,7 +44,7 @@ namespace Sion
 
          static void evillaugh()
         {
-            if (!Menu.Item("spam").GetValue<bool>()) return;
+            if (!Config.Item("spam").GetValue<bool>()) return;
             Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
             Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
         }
