@@ -33,7 +33,20 @@ namespace Sion
 
             Game.PrintChat("ben iflah olmaz bir seks makinesiyim");
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+            Game.OnGameUpdate += Game_OnGameUpdate;
             
+        }
+
+         static void Game_OnGameUpdate(EventArgs args)
+        {
+            evillaugh();
+        }
+
+         static void evillaugh()
+        {
+            if (!Menu.Item("spam").GetValue<bool>()) return;
+            Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
+            Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
         }
 
         static void Game_OnGameProcessPacket(GamePacketEventArgs args)
@@ -44,11 +57,10 @@ namespace Sion
                 if (p.ReadInteger(1) == ObjectManager.Player.NetworkId && p.Size() > 9)
                 {
                     args.Process = false;
-                    if (!Menu.Item("spam").GetValue<bool>()) return;
-                    Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
-                    Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
                 }
             }
         }
+        
+        
    }
 }
