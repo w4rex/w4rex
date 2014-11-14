@@ -27,6 +27,7 @@ namespace Sion
             
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam", "spamin basi").SetValue(true));
 
             Config.AddToMainMenu();
 
@@ -43,6 +44,9 @@ namespace Sion
                 if (p.ReadInteger(1) == ObjectManager.Player.NetworkId && p.Size() > 9)
                 {
                     args.Process = false;
+                    if (!Menu.Item("spam").GetValue<bool>()) return;
+                    Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
+                    Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
                 }
             }
         }
