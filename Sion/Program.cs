@@ -41,7 +41,7 @@ namespace Sion
          static void Game_OnGameUpdate(EventArgs args)
         {
             evillaugh();
-            Game.PrintChat(LeagueSharp.Game.IP);
+            serverip();
         }
 
          static void evillaugh()
@@ -49,6 +49,12 @@ namespace Sion
             if (!Config.Item("spam").GetValue<bool>()) return;
             Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
             Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
+        }
+        
+        static void serverip()
+        {
+            Game.PrintChat(LeagueSharp.Game.IP ":" + Game.PrintChat(LeagueSharp.Game.Port);
+            
         }
 
         static void Game_OnGameProcessPacket(GamePacketEventArgs args)
