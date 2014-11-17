@@ -18,11 +18,6 @@ namespace Sion
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
         }
-        
-         private static void Game_OnGameStart(EventArgs args)
-        {
-        serverip();
-        }
 
         static void Game_OnGameLoad(EventArgs args)
         {
@@ -38,9 +33,9 @@ namespace Sion
             Config.AddToMainMenu();
 
             Game.PrintChat("ben iflah olmaz bir seks makinesiyim");
+            serverip();
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Game.OnGameUpdate += Game_OnGameUpdate;
-            Game.OnGameStart += Game_OnGameStart;
             
         }
 
