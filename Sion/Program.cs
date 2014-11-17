@@ -28,7 +28,8 @@ namespace Sion
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam", "spamin basi").SetValue(true));
-             Config.SubMenu("3xpl01t").AddItem(new MenuItem("serverip", "server ip al").SetValue(true));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam2", "i i follow i follow you").SetValue(true));
+            Config.SubMenu("3xpl01t").AddItem(new MenuItem("serverip", "server ip al").SetValue(true));
 
             Config.AddToMainMenu();
 
@@ -48,13 +49,14 @@ namespace Sion
         {
             if (!Config.Item("spam").GetValue<bool>()) return;
             Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
+            if (!Config.Item("spam2").GetValue<bool>()) return;
             Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
         }
         
         static void serverip()
         {
             if (!Config.Item("serverip").GetValue<bool>()) return;
-            Game.PrintChat(LeagueSharp.Game.IP ":" + Game.PrintChat(LeagueSharp.Game.Port);
+            Game.PrintChat(LeagueSharp.Game.IP ":" + LeagueSharp.Game.Port);
             
         }
 
