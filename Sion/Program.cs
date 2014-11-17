@@ -43,6 +43,7 @@ namespace Sion
         {
             evillaugh();
             serverip();
+            garipspam();
         }
 
         static void evillaugh()
@@ -53,13 +54,14 @@ namespace Sion
             Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
         }
         
-        static void serverip()
+        public serverip()
         {
             if (!Config.Item("serverip").GetValue<bool>()) return;
             Game.PrintChat("SERVER IP:" + LeagueSharp.Game.IP);
             Game.PrintChat("SERVER PORT:" + LeagueSharp.Game.Port);
             
         }
+        
 
         static void Game_OnGameProcessPacket(GamePacketEventArgs args)
         {
