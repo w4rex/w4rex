@@ -28,7 +28,7 @@ namespace Sion
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam", "spamin basi").SetValue(true));
-             Config.SubMenu("3xpl01t").AddItem(new MenuItem("deneme", "spamin basi").SetValue(true));
+             Config.SubMenu("3xpl01t").AddItem(new MenuItem("serverip", "server ip'yi al").SetValue(true));
 
             Config.AddToMainMenu();
 
@@ -53,6 +53,7 @@ namespace Sion
         
         static void serverip()
         {
+            if (!Config.Item("serverip").GetValue<bool>()) return;
             Game.PrintChat(LeagueSharp.Game.IP ":" + Game.PrintChat(LeagueSharp.Game.Port);
             
         }
