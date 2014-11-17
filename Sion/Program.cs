@@ -28,6 +28,7 @@ namespace Sion
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam", "spamin basi").SetValue(true));
+             Config.SubMenu("3xpl01t").AddItem(new MenuItem("deneme", "spamin basi").SetValue(true));
 
             Config.AddToMainMenu();
 
@@ -40,6 +41,7 @@ namespace Sion
          static void Game_OnGameUpdate(EventArgs args)
         {
             evillaugh();
+            Game.PrintChat(LeagueSharp.Game.IP);
         }
 
          static void evillaugh()
