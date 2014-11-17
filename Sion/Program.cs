@@ -18,6 +18,11 @@ namespace Sion
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
         }
+        
+        private static void Game_OnGameStart(EventArgs args)
+        {
+        serverip();
+        }
 
         static void Game_OnGameLoad(EventArgs args)
         {
@@ -29,7 +34,6 @@ namespace Sion
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam", "spamin basi").SetValue(true));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam2", "i i follow i follow you").SetValue(true));
-            Config.SubMenu("3xpl01t").AddItem(new MenuItem("serverip", "server ip al").SetValue(true));
 
             Config.AddToMainMenu();
 
@@ -42,7 +46,6 @@ namespace Sion
          static void Game_OnGameUpdate(EventArgs args)
         {
             evillaugh();
-            serverip();
             garipspam();
         }
 
@@ -56,10 +59,8 @@ namespace Sion
         
         static void serverip()
         {
-            if (!Config.Item("serverip").GetValue<bool>()) return;
             Game.PrintChat("SERVER IP:" + LeagueSharp.Game.IP);
             Game.PrintChat("SERVER PORT:" + LeagueSharp.Game.Port);
-            return;
         }
         
 
