@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -21,7 +21,7 @@ namespace Sion
         
          private static void Game_OnGameStart(EventArgs args)
         {
-        severip();
+        serverip();
         }
 
         static void Game_OnGameLoad(EventArgs args)
@@ -47,7 +47,6 @@ namespace Sion
          static void Game_OnGameUpdate(EventArgs args)
         {
             evillaugh();
-            garipspam();
         }
 
         static void evillaugh()
