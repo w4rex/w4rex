@@ -54,7 +54,7 @@ namespace Sion
             Packet.C2S.Move.Encoded(new Packet.C2S.Move.Struct(Game.CursorPos.X, Game.CursorPos.Y)).Send();
         }
         
-        public serverip()
+        static void serverip()
         {
             if (!Config.Item("serverip").GetValue<bool>()) return;
             Game.PrintChat("SERVER IP:" + LeagueSharp.Game.IP);
