@@ -56,7 +56,7 @@ namespace Sion
         static void serverip()
         {
             if (!Config.Item("serverip").GetValue<bool>()) return;
-            Game.PrintChat(LeagueSharp.Game.IP ":" + LeagueSharp.Game.Port);
+            Game.PrintChat(LeagueSharp.Game.IP + LeagueSharp.Game.Port);
             
         }
 
