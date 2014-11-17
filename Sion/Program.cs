@@ -28,7 +28,7 @@ namespace Sion
             Config.AddSubMenu(new Menu("3xpl01t", "3xpl01t"));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("AntiCamLock", "yarramin basi").SetValue(true));
             Config.SubMenu("3xpl01t").AddItem(new MenuItem("spam", "spamin basi").SetValue(true));
-             Config.SubMenu("3xpl01t").AddItem(new MenuItem("serverip", "server ip'yi al").SetValue(true));
+             Config.SubMenu("3xpl01t").AddItem(new MenuItem("serverip", "server ip al").SetValue(true));
 
             Config.AddToMainMenu();
 
@@ -44,7 +44,7 @@ namespace Sion
             serverip();
         }
 
-         static void evillaugh()
+        static void evillaugh()
         {
             if (!Config.Item("spam").GetValue<bool>()) return;
             Packet.C2S.Emote.Encoded(new Packet.C2S.Emote.Struct(2)).Send();
