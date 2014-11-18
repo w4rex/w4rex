@@ -13,7 +13,7 @@ namespace Sion
     class Program
     {
         private static Menu Config;
-
+        public static MeinLanguage;
         static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -34,9 +34,21 @@ namespace Sion
 
             Game.PrintChat("ben iflah olmaz bir seks makinesiyim");
             serverip();
+            GetLanguageInfo();
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Game.OnGameUpdate += Game_OnGameUpdate;
             
+        }
+
+        static void GetLanguageInfo()
+        {
+            Process proc = Process.GetProcesses().First(p => p.ProcessName.Contains("League of Legends"));
+            String propFile = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(proc.Modules[0].FileName))))));
+            propFile += @"\projects\lol_air_client\releases\";
+            DirectoryInfo di = new DirectoryInfo(propFile).GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
+            propFile = di.FullName + @"\deploy\locale.properties";
+            propFile = File.ReadAllText(propFile);
+            MeinLanguage = new Regex("locale=(.+)_").Match(propFile).Groups[1].Value;
         }
 
          static void Game_OnGameUpdate(EventArgs args)
@@ -56,6 +68,7 @@ namespace Sion
         {
             Game.PrintChat("SERVER IP:" + LeagueSharp.Game.IP);
             Game.PrintChat("SERVER PORT:" + LeagueSharp.Game.Port);
+            Game.PrintChat("Kullanilan Dil:" + MeinLanguage);
         }
         
 
