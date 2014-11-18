@@ -61,7 +61,7 @@ namespace Sion
 
         static void Game_OnGameProcessPacket(GamePacketEventArgs args)
         {
-            if (args.PacketData[0] == 0xFE && Config.Item("AntiCamLock").GetValue<bool>())
+            if (args.PacketData[0] == 0xFE &&  Utility.InFountain())
             {
                 var p = new GamePacket(args.PacketData);
                 if (p.ReadInteger(1) == ObjectManager.Player.NetworkId && p.Size() > 9)
