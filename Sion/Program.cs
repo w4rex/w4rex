@@ -63,6 +63,7 @@ namespace Sion
         {
             if (args.PacketData[0] == 0xFE &&  Utility.InFountain())
             {
+                if (!Config.Item("AntiCamLock").GetValue<bool>()) return;
                 var p = new GamePacket(args.PacketData);
                 if (p.ReadInteger(1) == ObjectManager.Player.NetworkId && p.Size() > 9)
                 {
