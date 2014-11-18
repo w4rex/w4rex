@@ -35,8 +35,8 @@ namespace Sion
             Config.AddToMainMenu();
 
             Game.PrintChat("ben iflah olmaz bir seks makinesiyim");
-            serverip();
             GetLanguageInfo();
+            serverip();
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Game.OnGameUpdate += Game_OnGameUpdate;
             
