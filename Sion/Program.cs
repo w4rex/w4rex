@@ -68,9 +68,9 @@ namespace Sion
         
         static void serverip()
         {
-            Game.PrintChat("SERVER IP:" + LeagueSharp.Game.IP);
-            Game.PrintChat("SERVER PORT:" + LeagueSharp.Game.Port);
-            Game.PrintChat("Kullanilan Dil:" + MeinLanguage);
+            Game.PrintChat("SERVER IP: " + LeagueSharp.Game.IP);
+            Game.PrintChat("SERVER PORT: " + LeagueSharp.Game.Port);
+            Game.PrintChat("Kullanilan Dil: " + MeinLanguage);
         }
         
 
