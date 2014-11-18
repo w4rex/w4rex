@@ -13,7 +13,7 @@ namespace Sion
     class Program
     {
         private static Menu Config;
-        public static MeinLanguage;
+        public static String MeinLanguage;
         static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
